@@ -1,0 +1,47 @@
+package com.dxh.shuzu;
+
+import java.util.Scanner;
+
+public class Huixingshu {
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in); 
+		int n = scan.nextInt();
+		int [][]arr = new int[101][101];
+		int index = 1;
+		int maxX = n-1;
+		int maxY = n-1;
+		int minX = 0;
+		int minY = 0;
+		//x代表列 y代表行
+		while(minX<=maxX) {
+			
+			for(int x = minX;x <= maxX;x++) {
+				arr[minY][x]=index++;
+			}
+			minY++;
+			
+			for(int y = minY;y <= maxY;y++) {
+				arr[y][maxX]=index++;
+			}
+			maxX--;
+			
+			for(int x = maxX;x >= minX;x--) {
+				arr[maxY][x]=index++;
+			}
+			maxY--;
+			
+			for(int y = maxY;y >= minY;y--) {
+				arr[y][minX]=index++;
+			}
+			
+			minX++;
+		}
+
+		for( int i=0;i<n;i++) 
+		{
+			for(int j=0;j<n;j++) System.out.print(arr[i][j]+" ");
+			System.out.println();
+		}
+	
+	}
+}
